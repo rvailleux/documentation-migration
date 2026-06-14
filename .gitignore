@@ -1,0 +1,13 @@
+# Secrets — never commit
+.env
+
+# Python artifacts
+scripts/__pycache__/
+*.pyc
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Submodule is tracked separately
+gitbook-export/

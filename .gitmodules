@@ -1,0 +1,3 @@
+[submodule "gitbook-export"]
+	path = gitbook-export
+	url = git@github.com:rvailleux/docs.git
