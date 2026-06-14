@@ -43,7 +43,7 @@ git push origin master
 - **Git Sync:** Configured on all spaces but awaiting the GitBook GitHub app installation (one-click manual step, see `.env`). After the app is installed, pushes will automatically sync to GitBook.
 - **Visibility check:** Changes pushed to `gitbook-export/` are live on https://apizeelegacy.gitbook.io/apizeelegacy-docs within a few minutes. Use this URL to verify modifications.
 
-> **Never `rm -rf gitbook-export/`** — it lives on a Windows-mounted CIFS share; Linux cannot delete Windows-created files. Overwrite files in place instead.
+> **Never `rm -rf gitbook-export/`** — it is a git submodule with its own `.git/` directory. Overwrite files in place if needed.
 
 ## GitBook API & GitHub CLI
 
@@ -197,20 +197,6 @@ layout:
 - **`.gitbook/includes/`** — Files here are pulled into pages via `{% include %}` and should generally be excluded from `SUMMARY.md`.
 - **URL slugs** — Derived from the file path relative to `root`. `agents/start-a-session.md` becomes `/agents/start-a-session`.
 
-## CIFS / Windows-Mount Constraints
-
-`gitbook-export/` and `scripts/` live on a Windows SMB share mounted into the Linux sandbox.
-
-### 1. Linux cannot delete Windows-created files
-`rm -rf gitbook-export` will fail with "Operation not permitted". The correct strategy is **overwrite in place**.
-
-### 2. CIFS dentry cache: newly-created directories are invisible to `open()`
-After `mkdir()`, the Linux VFS dentry cache for the *parent* directory can be stale. `convert.py` works around this with `_safe_write()`, which flushes ancestors via `os.listdir()` before retrying a write. If writing files from scratch (not via `convert.py`), you may need a similar flush step.
-
-### 3. Page-cache split between Windows tools and Linux bash
-The Windows-side file tools (Read / Write / Edit) and the Linux bash process maintain **separate page caches**. After the Windows side writes a file, bash may read a stale version.
-
-**Mitigation**: always verify the actual on-disk state from bash (`wc -l`, `tail`, `cat`) rather than trusting the Read tool's view. To fix a stale bash cache, write the corrected content **from bash** using Python or `echo`.
 
 ## Legacy Migration
 
