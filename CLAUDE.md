@@ -41,6 +41,7 @@ git push origin master
 - **Remote:** `git@github.com:rvailleux/docs.git`
 - **Branch:** `master`
 - **Git Sync:** Configured on all spaces but awaiting the GitBook GitHub app installation (one-click manual step, see `.env`). After the app is installed, pushes will automatically sync to GitBook.
+- **Visibility check:** Changes pushed to `gitbook-export/` are live on https://apizeelegacy.gitbook.io/apizeelegacy-docs within a few minutes. Use this URL to verify modifications.
 
 > **Never `rm -rf gitbook-export/`** — it lives on a Windows-mounted CIFS share; Linux cannot delete Windows-created files. Overwrite files in place instead.
 
