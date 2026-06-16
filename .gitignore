@@ -9,5 +9,11 @@ scripts/__pycache__/
 .DS_Store
 Thumbs.db
 
+# Editor swap files
+*.swp
+
+# Node dependencies
+node_modules/
+
 # Submodule is tracked separately
 gitbook-export/
