@@ -82,6 +82,7 @@ gh pr create --title "..." --body "..."
 | Salesforce | `salesforce/` | `3Q0H4t76pLjcJWctIBRd` |
 | Genesys | `genesys/` | `KgZ8sXCpeG85FPndOp2q` |
 | ServiceNow | `servicenow/` | `UxiBx7vA0tJuSlEVazhl` |
+| Common | `common/` | `MdREU6GfqxU4taE8CS8z` |
 
 ## Content Editing Conventions
 
