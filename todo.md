@@ -428,3 +428,39 @@
 - [ ] Support agents know which docs are wrong or missing; there is no way for them to flag articles directly.
 - [ ] Add an "Is something wrong with this article?" link on every page that routes to the docs team.
 - [ ] Establish a **quarterly support agent review**.
+
+---
+
+## Run Summary — 2026-06-17
+
+### ✅ Done (markdown-editable items — 3 commits pushed to GitHub)
+
+| Commit | What was done |
+|--------|--------------|
+| `3aba941` | **Pre-flight fixes**: Removed orphaned `{% endhint %}` blocks in `create-a-new-service.md` across video-assistance, meetings, telehealth, video-assistance-multi. Fixed broken image path in `subscribe-to-an-offer.md` (`address` → `adress`). |
+| `7da7cbe` | **FAQ branding**: Replaced "Diag Help Desk" with "Apizee Video Assistance" in admins/agents/guests FAQ landing pages. Added legacy documentation warning hint on common help center homepage. |
+| `a93118c` | **FAQ titles**: Rewrote 13 non-idiomatic first-person FAQ titles in `faq/SUMMARY.md` and `faq/general/*.md` to natural second-person English ("I do not manage to join" → "Can't join the session?", etc.). |
+
+### ⚠️ Not actionable via markdown — requires GitBook UI or manual work
+
+The following items from this plan require GitBook dashboard configuration, third-party integrations, or large structural decisions:
+
+- **Enable helpfulness ratings / reactions** → GitBook dashboard setting
+- **Enable "Last updated" dates** → GitBook dashboard setting
+- **Set up search analytics / zero-result monitoring** → GitBook Insights or third-party (Datadog, Mixpanel)
+- **AI-powered search** → GitBook AI or third-party (Inkeep, Kapa.ai)
+- **Synonym/misspelling mapping** → Search tool configuration
+- **Status page link in header** → GitBook site customization settings
+- **"Apizeelegacy" domain migration** → Requires new GitBook site/domain setup
+- **URL flattening (≤3 levels)** → Large structural change; risk of breaking existing links; needs redirect strategy
+- **Consolidate duplicate persona articles** → ~400 pages to restructure; large editorial project
+- **Add GIFs/screen recordings** → Requires new media assets
+- **Audit/update screenshot freshness** → Requires product screenshots
+- **Publish public changelog** → Content to be written; could be done in `faq/whats-new.md` page
+- **Add FAQ schema markup** → Requires GitBook custom HTML/JS injection
+- **Localization strategy (FR/EN)** → Strategic decision required before implementation
+
+### Final validation
+- ✅ 0 hard errors (validated with `scripts/validate-gitbook.py --allow-cross-space`)
+- ✅ 1,363 files scanned, 1,299 warnings (cross-space image refs, expected on legacy migration)
+- ✅ Pushed to GitHub: `git@github.com:rvailleux/docs.git` master branch
